@@ -23,6 +23,7 @@ while True:
         break
     except ValueError:
         print("Invalid Error. The effective tax percentage must be between 0 and 100%.")
+
 Net = ((100-ETP)/100)*Gross # net pay formula
 
 print("Sadly, you actually get to take home $", Net) # User output with total
