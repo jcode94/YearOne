@@ -44,18 +44,18 @@ else:
             while True:
                 try:
                     path = int(input("And how many units do you want to move in that direction?\n"))
-                    if path + x > 100 or path + x < -100:
+                    if path + abs(x) > 100 or path + abs(y) > 100:
                         raise ValueError
                     break
                 except ValueError:
                     print("You would be moving outside of the working window. Try a smaller number.")
             # Ensuring correct sign of 'path' before calculation of 'x' and 'y'
-            if sign.strip().lower() == "positive":
+            if sign.strip().lower() == "positive" or "+":
                 path *= 1
-            elif sign.strip().lower() == "negative":
+            elif sign.strip().lower() == "negative" or "-":
                 path *= -1
             else:
-                print("Your answer must be either 'positive' or 'negative'.")
+                print("Your answer must be either 'positive', 'negative', '+' or '-'.")
             # Increasing the coordinate values based on the amended 'path' values.
             if direction.strip().lower() == "x":
                 x += path
