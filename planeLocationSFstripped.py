@@ -44,7 +44,7 @@ else:
             while True:
                 try:
                     path = int(input("And how many units do you want to move in that direction?\n"))
-                    if path + x >= 100 or path + x <= -100:
+                    if path + x > 100 or path + x < -100:
                         raise ValueError
                     break
                 except ValueError:
