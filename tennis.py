@@ -6,37 +6,50 @@
 # match is first to 2 sets.
 # set is first to 6 with 2 game lead(e.g. first to 6-4 or 7-6 tiebreaker
 
-sGames = 0
-rGames = 0
-sSets = 0
-rSets = 0
-totalSets = 0
+serenaWins = 0
+rogerWins = 0
+serenaSets = 0
+rogerSets = 0
 
-
-gameWinner = raw_input("Please enter the game winners, in sequence.\n")
+print("Please enter the game winners, in sequence.\n")
 
 while True:
-    if gameWinner == "SERENA":
-        sGames += 1
-        if sGames == 6 and rGames < 5:
-            sSets += 1
-            totalSets += 1
-        elif sGames == 7:
-            sSets += 1
-    if gameWinner == "ROGER":
-        rGames += 1
-        if rGames == 6 and sGames < 5:
-            rSets += 1
-            totalSets += 1
-        elif rGames == 7:
-            rSets += 1
-    if totalSets >= 2 and sSets == 2 or rSets == 2:
+    if serenaSets == 2 or rogerSets == 2:
+        if rogerSets > serenaSets:
+            print("ROGER won the game 2 sets to {} sets.".format(serenaSets))
+            break
+        else:
+            print("SERENA won the game 2 sets to {}.".format(rogerSets))
         break
-if sSets == 2:
-    player = "SERENA"
-    print("{} won the match 2 sets to {}".format(player, rSets))
-if rSets == 2:
-    player = "ROGER"
-    print("{} won the match 2 sets to {}".format(player, sSets))
 
+    gameWinner = input()
 
+    if gameWinner == "SERENA":
+        serenaWins += 1
+
+        if serenaWins == 6 and serenaWins >= (rogerWins + 2):
+            serenaWins = 0
+            rogerWins = 0
+            serenaSets += 1
+
+        if serenaWins == 7 and rogerWins == 6:
+            serenaWins = 0
+            rogerWins = 0
+            serenaSets += 1
+
+    if gameWinner == "ROGER":
+        rogerWins += 1
+
+        if rogerWins == 6 and rogerWins >= (serenaWins + 2):
+            rogerWins = 0
+            serenaWins = 0
+            rogerSets += 1
+
+        if rogerWins == 7 and serenaWins == 6:
+            rogerWins = 0
+            serenaWins = 0
+            rogerSets += 1
+
+    else:
+        print("Error: Unrecognized Input. Please enter either ROGER or SERENA.")
+        continue
