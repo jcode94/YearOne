@@ -1,5 +1,5 @@
 # Justice Smith, 5.13.2020
-# Find in repo: github.com/jcode94/YearOne/
+# Find here: https://raw.githubusercontent.com/jcode94/YearOne/master/kwInsert.py
 
 import random
 
